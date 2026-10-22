@@ -162,6 +162,10 @@ def inverse_power_method(
     :func:`numerica.lu_factor` and normalizes ``y``. ``shift`` must not be
     exactly an eigenvalue, because then ``A - shift I`` is singular.
 
+    The iteration never leaves an invariant subspace. An initial vector that
+    is already an eigenvector is returned unchanged, even if another
+    eigenvalue lies closer to ``shift``.
+
     Parameters
     ----------
     a :

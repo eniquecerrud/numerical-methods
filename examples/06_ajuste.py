@@ -19,7 +19,8 @@ def main() -> None:
 
     matrix = np.array([[2.0, 1.0], [1.0, 2.0]])
     dominant = power_method(matrix)
-    closest = inverse_power_method(matrix, shift=0.5)
+    # [1, 1] ya es el autovector de λ = 3; hay que arrancar fuera de ese eje.
+    closest = inverse_power_method(matrix, shift=0.5, x0=[1.0, 0.0])
     print(f"\nAutovalor dominante ≈ {dominant.eigenvalue:.6f}  (exacto 3)")
     print(f"Vector               {dominant.eigenvector}")
     print(f"Componente de referencia {1.0 / math.sqrt(2.0):.6f}")

@@ -26,6 +26,12 @@ def test_power_method_keeps_the_sign_of_a_negative_eigenvalue() -> None:
     assert result.eigenvector == pytest.approx([0.0, 1.0], abs=1e-8)
 
 
+def test_inverse_power_needs_a_component_along_the_target() -> None:
+    matrix = np.array([[2.0, 1.0], [1.0, 2.0]])
+    result = inverse_power_method(matrix, shift=0.5, x0=[1.0, 0.0], tol=1e-12)
+    assert result.eigenvalue == pytest.approx(1.0)
+
+
 def test_inverse_power_finds_the_closest_eigenvalue() -> None:
     matrix = np.diag([1.0, 3.0, 10.0])
     result = inverse_power_method(matrix, shift=2.4, tol=1e-12)
